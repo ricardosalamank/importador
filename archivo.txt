@@ -1,0 +1,4 @@
+nombres,apaellidos,telefonos,direcciones
+ricardo,salamanca,3104765387,calle falsa
+cristian,baron,3104768956,calle verdadera
+lucia,medina,3104569873,calle buena

@@ -1,9 +1,37 @@
-<h1 class="page-header">Empleados</h1>
+<h1 class="page-header">IMPORTADOR</h1>
 
+<!------
 <div class="well well-sm text-right">
     <a class="btn btn-primary" href="?c=Empleado&a=Crud">Nuevo Empleado</a>
 </div>
+------>
 
+<form id="frm-empleado" action="?c=Empleado&a=forValid" method="post" enctype="multipart/form-data">
+ 
+    <div class="form-group">
+        <label>Adjunta Archivo A Importar</label>
+        <input type="file" name="archivo"  class="form-control"  />
+    </div>
+
+    <div class="form-group">
+        <label>Separador</label>
+        <input type="text" name="separador" class="form-control" placeholder="Ingrese su separador" data-validacion-tipo="requerido|min:1" />
+    </div>
+
+    <div class="form-group">
+        <label>Tabla</label>
+        <input type="text" name="tabla" class="form-control" placeholder="Ingrese su tabla" data-validacion-tipo="requerido|min:3" />
+    </div>
+
+    <hr />
+    
+    <div class="text-right">
+        <button class="btn btn-success">Validar</button>
+    </div>
+</form>
+
+
+<!------
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,3 +54,4 @@
     <?php endforeach; ?>
     </tbody>
 </table> 
+----->

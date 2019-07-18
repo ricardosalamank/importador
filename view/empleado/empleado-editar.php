@@ -1,38 +1,57 @@
 <h1 class="page-header">
-    <?php echo $alm->id != null ? $alm->nombre : 'Nuevo Registro'; ?>
+    CAMPOS A IMPORTAR
 </h1>
 
 <ol class="breadcrumb">
-  <li><a href="?c=Empleado">Empleados</a></li>
-  <li class="active"><?php echo $alm->id != null ? $alm->nombre : 'Nuevo Registro'; ?></li>
+  <li><a href="?c=Empleado">Importar</a></li>
+  <li class="active">CAMPOS</li>
 </ol>
 
-<form id="frm-empleado" action="?c=Empleado&a=Guardar" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?php echo $alm->id; ?>" />
-    
-    <div class="form-group">
-        <label>Nombre</label>
-        <input type="text" name="nombre" value="<?php echo $alm->nombre; ?>" class="form-control" placeholder="Ingrese su nombre" data-validacion-tipo="requerido|min:3" />
-    </div>
-    
-    <div class="form-group">
-        <label>Apellido</label>
-        <input type="text" name="apellido" value="<?php echo $alm->apellido; ?>" class="form-control" placeholder="Ingrese su apellido" data-validacion-tipo="requerido|min:10" />
-    </div>
+<form id="frm-import">
 
-
-
+<input type="hidden" name="separador" value="<?php echo $separador; ?>" />
+<input type="hidden" name="tabla" value="<?php echo $tabla; ?>" />
+   
+    <?php echo $select; ?>
     <hr />
-    
-    <div class="text-right">
-        <button class="btn btn-success">Guardar</button>
-    </div>
+
 </form>
 
+
+<div class="text-right">
+        <button class="btn btn-success" onclick="importar()">Guardar</button>
+    </div>
+
+    
+
+
+<div id='resp'></div>
 <script>
-    $(document).ready(function(){
-        $("#frm-empleado").submit(function(){
-            return $(this).validate();
-        });
-    })
+function importar(){
+        $.ajax({
+            type: "POST",
+            url: 'index.php?c=Empleado&a=Guardar',
+            data: $('#frm-import').serialize(),
+            success: function(response)
+            {
+                console.log(response);
+                if (response == "S"){
+                    $('#resp').html("<strong>Importado!</strong>");
+                    alert('Importado Exitosamente!');
+                } else {
+                    $('#resp').html("<strong>Fallo Importacion!</strong>");
+                    alert('Fallo Importacion!');
+                }
+              
+               
+           }
+       });
+
+           
+
+}
+
+
+
+   
 </script>

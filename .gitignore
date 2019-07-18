@@ -1,0 +1,13 @@
+*.log
+tmp/*
+logs/*
+locale/*
+nbproject/*
+adminfo_archivos/uploads/*
+adminfo_archivos/filemanager_config/*
+adminfo_archivos/formatos/*
+configuracion/*
+\.idea/
+.phpintel/
+build/
+cache.properties

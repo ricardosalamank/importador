@@ -52,6 +52,40 @@ class Empleado
 		}
 	}
 
+	public function ObtenerEstructura($tabla)
+	{
+		try 
+		{
+
+            $stm = $this->pdo
+                ->prepare("SELECT column_name as columna
+                            FROM information_schema.columns
+                            WHERE table_name   = ?");
+
+			$stm->execute(array($tabla));
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
+	public function idCampana()
+	{
+		try 
+		{
+			$stm = $this->pdo
+			          ->prepare("select consecutivo from codigos_campanas order by consecutivo desc limit 1");
+			          
+
+			$stm->execute();
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+
 	public function Eliminar($id)
 	{
 		try 
@@ -89,20 +123,14 @@ class Empleado
 		}
 	}
 
-	public function Registrar(Empleado $data)
+	public function registrar($valores,$tabla)
 	{
 		try 
 		{
-		$sql = "INSERT INTO empleado (nombre,apellido) 
-		        VALUES (?, ?)";
+		$sql = "INSERT INTO $tabla $valores";
 
-		$this->pdo->prepare($sql)
-		     ->execute(
-				array(
-                    $data->nombre,
-                    $data->apellido
-                )
-			);
+		return $this->pdo->prepare($sql)
+		     ->execute();
 		} catch (Exception $e) 
 		{
 			die($e->getMessage());
