@@ -95,7 +95,11 @@ class EmpleadoController{
                         if($calve2=="codigo_campana"){
                             $valores .= "'$idCampana',";
                         } else {
-                            $valores .= "'".$data[$valor2]."',";
+                            if($valor2 == 'N'){
+                                $valores .= "null,";
+                            } else {
+                                $valores .= "'".$data[$valor2]."',";
+                            }
                         }
                     }
                 }
