@@ -2,7 +2,7 @@
                 <div class="col-xs-12">
                     <hr />
                     <footer class="text-center well">
-                        <p>Ejemplo desarrollado por <a href="http://anexsoft.com">Ricardo Salamanca Fuentes de ayuda : http://anexsoft.com</a></p>
+                        <p>Ejemplo desarrollado por <a href="http://anexsoft.com">Ricardo Salamanca Fuentes</a></p>
                     </footer>                
                 </div>    
             </div>
